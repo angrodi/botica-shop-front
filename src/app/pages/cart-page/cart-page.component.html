@@ -1,0 +1,123 @@
+<app-breadcrumb [titulo]="'carrito'"></app-breadcrumb>
+
+<!-- product tab start -->
+<section class="whish-list-section theme1 pt-80 pb-80" *ngIf="pedidoService.calcularCantidadCarrito() > 0">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h3 class="title mb-30 pb-25">Tu pedido</h3>
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead class="thead-light">
+                          <tr>
+                              <th class="text-center" scope="col">Imagen</th>
+                              <th class="text-center" scope="col">Producto</th>
+                              <th class="text-center" scope="col">Precio</th>
+                              <th class="text-center" scope="col">Cantidad</th>
+                              <th class="text-center" scope="col">Subtotal</th>
+                              <th class="text-center" scope="col">Acción</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let detalle of pedidoService.pedido.detalles">
+                              <th class="text-center" scope="row">
+                                  <img [src]="detalle.producto?.imagen" alt="img" width="100px">
+                              </th>
+                              <td class="text-center">
+                                  <span class="whish-title">{{ detalle.producto?.nombre }}</span>
+                              </td>
+                              <td class="text-center">
+                                <span class="whish-list-price">
+                                    {{ detalle.producto?.precio | currency }}
+                                </span>
+                              </td>
+                              <td class="text-center">
+                                  <div class="product-count style">
+                                      <div class="count d-flex justify-content-center">
+                                          <input type="number" min="1" max="10" step="1" value="1">
+                                      </div>
+                                  </div>
+                              </td>
+                              <td class="text-center">
+                                  <span class="whish-list-price">
+                                      
+                                  </span>
+                              </td>
+
+                              <td class="text-center">
+                                  <a href="#"> <span class="trash"><i class="fas fa-trash-alt"></i> </span></a>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+
+              <h3 class="title mb-30 pb-25 mt-5">Datos personales</h3>
+              <form>
+                  <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <label for="nombresInput" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="nombresInput" name="nombres">
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <label for="apellidosInput" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidosInput" name="apellidos">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <label for="dniInput" class="form-label">DNI</label>
+                        <input type="text" class="form-control" id="dniInput" name="dni">
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <label for="emailInput" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="emailInput" name="email">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-md-6 mb-4">
+                        <label for="telefonoInput" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefonoInput" name="telefono">
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <label for="direccionInput" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccionInput" name="direccion">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12 text-right mb-4">
+                          <h5 class="text-uppercase">Total de su compra:</h5>
+                      </div>
+                      <div class="col-12 text-right mb-5">
+                          <h1 class="text-uppercase">S/. 3.00</h1>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12 text-right mb-5">
+                          <p class="text-uppercase "><span>Importante:</span> El pago se realiza a la entrega del pedido.</p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12 text-right">
+                          <button type="submit" class="btn btn-outline-secondary btn--md mr-2">Seguir comprando</button>
+                          <button type="submit" class="btn theme-btn--dark1 btn--md">Confirmar compra</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+<div class="container py-5" *ngIf="pedidoService.calcularCantidadCarrito() === 0">
+    <div class="p-4 mb-4" style="background-color: seashell; border-radius: 5px;">
+        <p class="text-dark">Todavía no cargo productos al carrito de compras.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-right">
+            <button type="submit" class="btn theme-btn--dark1 btn--md" routerLink="/">Seguir comprando</button>
+        </div>
+    </div>
+</div>
+<!-- product tab end -->

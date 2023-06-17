@@ -1,0 +1,60 @@
+<app-slider></app-slider>
+
+<!-- product tab start -->
+<section class="product-tab bg-white pt-50 pb-80">
+  <div class="container">
+      <div class="product-tab-nav mb-35">
+          <div class="row align-items-center">
+              <div class="col-12">
+                  <div class="section-title text-center mb-30">
+                      <h2 class="title text-dark">Productos destacados</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- product-tab-nav end -->
+
+      <!-- product tab start -->
+      <div class="product-tab bg-white pt-20 pb-20">
+        <div class="container">
+            <!-- product-tab-nav end -->
+            <div class="tab-content" id="pills-tabContent">
+                <!-- first tab-pane -->
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row grid-view theme1">
+                        <div class="col-sm-6 col-lg-4 col-xl-3 mb-30 hover"
+                             *ngFor="let producto of productos">
+                            <div class="card product-card">
+                                <div class="card-body p-0">
+                                    <div class="media flex-column">
+                                        <div class="product-thumbnail position-relative">
+                                            <a [routerLink]="['/producto', producto.id]">
+                                                <img class="first-img" [src]="producto.imagen"
+                                                    alt="thumbnail">
+                                            </a>
+                                        </div>
+                                        <div class="media-body w-100 px-3">
+                                            <div class="product-desc">
+                                                <h3 class="title"><a [routerLink]="['/producto', producto.id]">{{ producto.nombre }}</a></h3>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="product-price">{{ producto.precio | currency }}</h6>
+                                                    <button class="pro-btn" (click)="agregar(producto)">
+                                                        <i class="icon-basket"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- product tab end -->
+
+  </div>
+</section>
+<!-- product tab end -->
